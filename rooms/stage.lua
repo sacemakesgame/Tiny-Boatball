@@ -438,10 +438,10 @@ function Stage:draw()
 
     -- graphics.draw(self.sun.canvas, 0, 0, 0, .3) -- shadow map
 
-    self.ally_holder:draw2d()
+    -- self.ally_holder:draw2d()
     self.opponent_holder:draw2d()
     
-    self.score_board:draw()
+    -- self.score_board:draw()
     
     self.chat_holder:draw()
     self.ui_holder:draw()

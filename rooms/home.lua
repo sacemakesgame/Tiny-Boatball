@@ -355,17 +355,14 @@ end
 
 function Home:get_title_string()
     if self.type == TYPE.MAIN then
-        return 'tiny boatball'
+        return 'tiny boatball!'
     elseif self.type == TYPE.CAREER then
-        -- return 'career'
         local stages = { 'qualifier', 'quarterfinal', 'semifinal', 'final' }
         return 'next: ' .. stages[CAREER_MATCH_COUNTER]
     elseif self.type == TYPE.QUICKMATCH then
         return 'quick match'
     elseif self.type == TYPE.OPTIONS then
         return 'settings'
-    else
-        return 'gay'
     end
 end
 

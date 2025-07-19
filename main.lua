@@ -125,8 +125,8 @@ function love.load()
     love.graphics.setBackgroundColor(color.palette.wall)
 
 
-    -- gamestate.init(Home, TYPE.MAIN)
-    gamestate.init(Stage, TYPE.CAREER)
+    gamestate.init(Home, TYPE.MAIN)
+    -- gamestate.init(Stage, TYPE.CAREER)
     
     min_dt = 1/60
     next_time = love.timer.getTime()
@@ -167,14 +167,14 @@ function love.draw()
 
 end
 
---[[
+-- [[
 function love.keypressed(key)
     if key == '`' then -- since espace is used to open menu
         love.event.quit()
     elseif key == 'f5' then
         love.event.quit('restart')
     end
-end]]
+end--]]
 
 
 
