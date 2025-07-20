@@ -70,10 +70,15 @@ function toolkit:init()
     self.fxaa:send('fxaa_reduce_mul', (1.0 / 8.0))
     self.fxaa:send('fxaa_span_max', 8.0)  
 
+    self.brush = love.graphics.newShader(pigic.brush)
+    self.brush:send('flowMap', graphics.new_image('game-assets/png/a-normal-map.jpg'))
+    self.brush:send('time', love.timer.getTime())
+
     self.curtain_scale = 0
 end
 
 function toolkit:update(dt)
+    self.brush:send('time', love.timer.getTime())
     local dt = math.min(dt, 1/30) -- useful for frame drops due to moving game window
 
     log:update(dt)
@@ -89,7 +94,8 @@ function toolkit:draw()
     graphics.set_canvas()
 
     graphics.set_blend_mode('alpha', 'premultiplied')
-    graphics.set_shader(self.fxaa)
+    -- graphics.set_shader(self.fxaa)
+    graphics.set_shader(self.brush)
     graphics.draw(self.canvas, self.canvas_x, self.canvas_y, 0, self.canvas_scale * self.canvas_divider)
     graphics.set_shader()
     graphics.set_blend_mode('alpha')

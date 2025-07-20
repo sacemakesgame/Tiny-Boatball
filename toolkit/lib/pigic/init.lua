@@ -34,6 +34,7 @@ pigic.glsl_depth        = path .. 'shaders/depth.glsl'
 pigic.outline_filter    = path .. 'shaders/outline-filter.glsl'
 pigic.outline_filter_2d = path .. 'shaders/outline-filter-2d.glsl'
 pigic.outline           = path .. 'shaders/outline.glsl'
+pigic.brush             = path .. 'shaders/brush.frag'
 
 
 pigic.objloader = require(path .. 'objloader')
