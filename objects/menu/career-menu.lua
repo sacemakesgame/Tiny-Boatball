@@ -56,7 +56,7 @@ function CareerMenu:draw()
         graphics.printmid('choose one!', math.cos(i) * thickness, math.sin(i) * thickness, 0, .4)
     end
     graphics.pop()
-    graphics.printmid('(enter to confirm)', self.spring.x, self.spring.y - 150 * scale + 75 * scale, 0, .2 + (self.arrow_up.spring.x + self.arrow_down.spring.x - 2) * .2)
+    graphics.printmid('(enter to confirm)', self.spring.x, self.spring.y - 150 * scale + 75 * scale, 0, .2 + (self.arrow_up.spring.x + self.arrow_down.spring.x - 2) * .25)
     
     -- "back" text info
     graphics.push()
