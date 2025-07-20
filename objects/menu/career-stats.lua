@@ -27,7 +27,6 @@ end
 
 
 function CareerStats:draw()
-    --[[
     -- stats thing
     graphics.push()
     graphics.translate(self.blue_stats_spring.x, self.blue_stats_spring.y)
@@ -92,8 +91,6 @@ function CareerStats:draw()
     graphics.translate(self.spring.x, self.spring.y)
     CareerStats.super.draw(self)
     graphics.pop()
-
-    ]]
 end
 
 
