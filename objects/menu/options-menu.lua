@@ -89,7 +89,8 @@ end
 
 
 function OptionsMenu:enter(active)
-    self.timer:tween(1, self.owner.eye.offset, {y = 20, z = 10}, math.cubic_in_out, nil, 'eye-offset')
+    -- self.timer:tween(1, self.owner.eye.offset, {y = 20, z = 10}, math.cubic_in_out, nil, 'eye-offset')
+    self.timer:tween(1, self.owner.eye.offset, {y = 20 * 1.7, z = 10 * 1.7}, math.cubic_in_out, nil, 'eye-offset')
     self.owner.eye.target:set(0, 0, 0)
     self.active_block = active or 1
     self.spring:animate(width/2, height * 7.5/10)
@@ -98,7 +99,8 @@ end
 
 function OptionsMenu:exit()
     save_options_data()
-    self.timer:tween(1, self.owner.eye.offset, {y = 30, z = 40}, math.cubic_in_out, nil, 'eye-offset')
+    -- self.timer:tween(1, self.owner.eye.offset, {y = 30, z = 40}, math.cubic_in_out, nil, 'eye-offset')
+    self.timer:tween(1, self.owner.eye.offset, {y = 30 * 1.7, z = 40 * 1.7}, math.cubic_in_out, nil, 'eye-offset')
     self.spring:animate(width/2, height*1.25)
 end
 

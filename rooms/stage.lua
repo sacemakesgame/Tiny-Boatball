@@ -30,7 +30,8 @@ function Stage:enter(prev, type)
     self.eye.shake_rotate = class.shake3d()
     self.eye.shader = graphics.new_shader(pigic.unlit)
     -- local scale = 100
-    self.eye.projection = mat4.from_perspective(50, width/height, .01, 300)
+    -- self.eye.projection = mat4.from_perspective(50, width/height, .01, 300)
+    self.eye.projection = mat4.from_perspective(30, width/height, .01, 300)
     self.eye.shader:send('projectionMatrix', 'column', self.eye.projection)    
     
     self.world = pigic.world(self)
@@ -118,7 +119,8 @@ function Stage:enter(prev, type)
     self.goal_right = {from = vec3(15, -h/2, -d/2), size = vec3(w, h, d)}
 
     self.eye.offset = vec3()
-    self.eye.from = vec3(0, 30, 40)
+    -- self.eye.from = vec3(0, 30, 40)
+    self.eye.from = vec3(0, 30 * 1.7, 40 * 1.7)
     self.eye.from_lerpweight = 0
     self.eye.offset_lerpweight = 0
     self.timer:tween(1, self.eye, {from_lerpweight = .2, offset_lerpweight = .5}, math.quint_in)
@@ -335,8 +337,9 @@ function Stage:update(dt)
     
     self.eye.offset:lerp(offset, self.eye.offset_lerpweight)
     
-    local offset_y = math.remap((self.player.translation - self.ball.translation):len(), 5, 15, 12, 15)
-    self.eye.from:lerp(vec3(self.eye.offset.x, offset_y, 10 + self.eye.offset.z), self.eye.from_lerpweight)
+    -- local offset_y = math.remap((self.player.translation - self.ball.translation):len(), 5, 15, 12, 15)
+    local offset_y = math.remap((self.player.translation - self.ball.translation):len(), 5, 15, 12 * 2, 15 * 2)
+    self.eye.from:lerp(vec3(self.eye.offset.x, offset_y, 20 + self.eye.offset.z), self.eye.from_lerpweight)
 
     self.eye.transform:look_at(self.eye.from, vec3(self.eye.offset.x, 0, self.eye.offset.z), vec3(0, 1, 0))
 
@@ -438,10 +441,10 @@ function Stage:draw()
 
     -- graphics.draw(self.sun.canvas, 0, 0, 0, .3) -- shadow map
 
-    -- self.ally_holder:draw2d()
+    self.ally_holder:draw2d()
     self.opponent_holder:draw2d()
     
-    -- self.score_board:draw()
+    self.score_board:draw()
     
     self.chat_holder:draw()
     self.ui_holder:draw()

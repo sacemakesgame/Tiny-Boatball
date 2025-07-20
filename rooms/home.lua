@@ -28,11 +28,11 @@ function Home:enter(prev, type, active_block)
     self.eye.transform = mat4()
     self.eye.shake = class.shake3d()
     self.eye.shader = graphics.new_shader(pigic.unlit)
-    self.eye.projection = mat4.from_perspective(50, width/height, .01, 300)
+    self.eye.projection = mat4.from_perspective(30, width/height, .01, 300)
     self.eye.shader:send('projectionMatrix', 'column', self.eye.projection)
     self.eye.target = vec3()
     self.eye.spring = class.spring3d(nil, 100, 30)
-    self.eye.offset = vec3(0, 30, 40)
+    self.eye.offset = vec3(0, 30 * 1.7, 40 * 1.7)
     
     self.world = pigic.world()
     
@@ -280,10 +280,7 @@ function Home:draw()
 
     if self.type == TYPE.CAREER then
         self.outline.filter:send('isWater', true)
-        pass.push()
-        pass.scale(scale)
         self.water:draw()
-        pass.pop()
         self.outline.filter:send('isWater', false)
         self.outline.filter:send('idColor', {1,0,0})
 
