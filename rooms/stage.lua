@@ -12,6 +12,7 @@ function Stage:enter(prev, type)
 
     self.sound = class.sound(self, {'music', 'sfx'})
     self.sound:randomize_pitch('sfx', .95, 1.05)
+    self.sound:add('music', 'music', 'game-assets/audio/HeatleyBros - HeatleyBros VI - Play It Cool.mp3', 'stream')
     self.sound:add('oreo', 'sfx', 'game-assets/audio/oreo.wav', 'static')
     self.sound:add('nos', 'sfx', 'game-assets/audio/nos.ogg', 'static')
     self.sound:add('ball-bounce', 'sfx', 'game-assets/audio/ball-bounce.ogg', 'static')
@@ -22,6 +23,7 @@ function Stage:enter(prev, type)
     self.sound:add('goal-snare', 'sfx', 'game-assets/audio/goal-snare.wav', 'static')
     self.sound:add('blunder-snare', 'sfx', 'game-assets/audio/blunder-snare.wav', 'static')
     self.sound:add('wow', 'sfx', 'game-assets/audio/wow.ogg', 'static')
+
 
     -- eye aka camera
     self.eye = {}
@@ -56,9 +58,6 @@ function Stage:enter(prev, type)
         self.stats_menu = self.ui_holder:add(CareerStats)
         CAREER_CHARACTER_LIST.opponent = CAREER_OPPONENT_LIST[CAREER_MATCH_COUNTER] -- update opponent list
         character_list = CAREER_CHARACTER_LIST
-    elseif type == TYPE.QUICKMATCH then
-        self.stats_menu = self.ui_holder:add(QuickMatchStats)
-        character_list = QUICKMATCH_CHARACTER_LIST
     end
 
     self.pause_menu = self.ui_holder:add(PauseMenu) -- gotta declared before any other menu, cuz it needs to overlay it all
@@ -452,6 +451,7 @@ end
 
 
 function Stage:exit()
+    self.sound:stop('music')
 end
 
 
@@ -559,6 +559,8 @@ function Stage:start_match()
         wait(1) -- START
         self.chat_holder:add(BubbleChat, vec2(width/2, 150 * scale), 'START!!', .03, 1, .75).rotate_spring:pull(math.pi*2)
         self.sound:play('start-whistle')
+        self.sound:play('music', 0, 0, true)
+
         self.is_counting = true
         
         self.world:activate(self.ball)

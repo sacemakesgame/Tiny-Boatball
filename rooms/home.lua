@@ -12,9 +12,12 @@ function Home:enter(prev, type, active_block)
     self.sound = class.sound(self, {'music', 'sfx', 'oreo'})
     self.sound:randomize_pitch('sfx', .95, 1.05)
     self.sound:add('oreo', 'oreo', 'game-assets/audio/oreo.wav', 'static') -- special for oreo :O
+    self.sound:add('music', 'music', 'game-assets/audio/HeatleyBros - HeatleyBros V - 16 Brassy Jazz.mp3', 'stream')
     self.sound:add('nos', 'sfx', 'game-assets/audio/nos.ogg', 'static')
     self.sound:add('ball-bounce', 'sfx', 'game-assets/audio/ball-bounce.ogg', 'static')
     self.sound:add('blunder-snare', 'sfx', 'game-assets/audio/blunder-snare.wav', 'static')
+
+    self.sound:play('music', 0, 0, true)
 
     self.sound:set_volume('sfx', 0)
     self.timer:after(2, function()
@@ -22,7 +25,7 @@ function Home:enter(prev, type, active_block)
             self.sound:set_volume('sfx', 1)
         end
     end)
-
+    
     -- eye aka camera
     self.eye = {}
     self.eye.transform = mat4()
@@ -138,7 +141,6 @@ function Home:enter(prev, type, active_block)
     self.ui_holder = class.holder(self)
     self.main_menu = self.ui_holder:add(MainMenu)
     self.career_menu = self.ui_holder:add(CareerMenu)
-    self.quickmatch_menu = self.ui_holder:add(QuickMatchMenu)
     self.options_menu = self.ui_holder:add(OptionsMenu)
     self.character_display = CharacterDisplay(self)
     self.chat_holder = class.holder(self)
@@ -148,8 +150,6 @@ function Home:enter(prev, type, active_block)
         self.main_menu:enter(1)
     elseif type == TYPE.CAREER then
         self.career_menu:enter()
-    elseif type == TYPE.QUICKMATCH then
-        self.quickmatch_menu:enter()
     elseif type == TYPE.OPTIONS then
         self.options_menu:enter(active_block)
     end
@@ -192,8 +192,6 @@ function Home:update(dt)
         self.main_menu:process_input()
     elseif self.type == TYPE.CAREER then
         self.career_menu:process_input()
-    elseif self.type == TYPE.QUICKMATCH then
-        self.quickmatch_menu:process_input()
     elseif self.type == TYPE.OPTIONS then
         self.options_menu:process_input()
     end
@@ -209,8 +207,6 @@ function Home:update(dt)
         self.main_menu:set_active()
     elseif self.type == TYPE.CAREER then
         self.career_menu:set_active()
-    elseif self.type == TYPE.QUICKMATCH then
-        self.quickmatch_menu:set_active()
     elseif self.type == TYPE.OPTIONS then
         self.options_menu:set_active()
     end
@@ -324,7 +320,7 @@ function Home:draw()
     self.character_display:draw()    
     
     self.chat_holder:draw()
-    
+
 
     -- title thing
     graphics.push()
@@ -356,8 +352,6 @@ function Home:get_title_string()
     elseif self.type == TYPE.CAREER then
         local stages = { 'qualifier', 'quarterfinal', 'semifinal', 'final' }
         return 'next: ' .. stages[CAREER_MATCH_COUNTER]
-    elseif self.type == TYPE.QUICKMATCH then
-        return 'quick match'
     elseif self.type == TYPE.OPTIONS then
         return 'settings'
     end
@@ -365,6 +359,7 @@ end
 
 
 function Home:exit()
+    self.sound:stop('music')
 end
 
 
