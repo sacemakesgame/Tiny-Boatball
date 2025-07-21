@@ -160,8 +160,12 @@ function CareerMenu:process_input()
                     CAREER_CHARACTER_LIST.ally[i] = self.holder.objects[i+1]:get()
                 end
                 CAREER_CHARACTER_LIST.player_index = self.selected_index -1 -- minus 1 cuz it stats from 2
-                print(self.selected_index)
 
+                local i = 1
+                self.timer:every_immediate(.1, function()
+                    i = i - .18
+                    self.owner.sound:set_volume('music', i)
+                end, 5)
                 self.timer:after(.5, function()
                     tool:switch(Stage, TYPE.CAREER)
                 end)
