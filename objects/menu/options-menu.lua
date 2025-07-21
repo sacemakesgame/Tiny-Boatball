@@ -10,7 +10,8 @@ function OptionsMenu:new(owner)
     self:add(ResolutionButton, width / 5, height/15, 'resolution')
     self:add(AspectRatioButton, width / 5, height/15, 'aspect ratio')
     self:add(FullscreenButton, width / 5, height/15, 'fullscreen')
-    self:add(SfxButton, width / 5, height/15, 'sound effects')
+    self:add(SfxButton, width / 5, height/15, 'sfx volume')
+    self:add(MusicButton, width / 5, height/15, 'music volume')
     -- self:add(Button, width / 5, height/15, 'input remapping')
     self:add(Blank, width / 5, height/30)
     self:add(Button, width / 5, height/15, 'back')
@@ -61,7 +62,7 @@ function OptionsMenu:process_input()
         if self:is_button('back') then -- back
             self.holder.objects[self.active_block]:animate_pressed()
         -- gotta animate some no-wiggle thing
-        elseif self:is_button('resolution') or self:is_button('aspect ratio') or self:is_button('fullscreen') or self:is_button('input remapping') or self:is_button('sound effects') then
+        elseif self:is_button('resolution') or self:is_button('aspect ratio') or self:is_button('fullscreen') or self:is_button('input remapping') or self:is_button('sfx volume') or self:is_button('music volume') then
             self.holder.objects[self.active_block]:head_shake()
             self.owner.sound:play('blunder-snare')
         end

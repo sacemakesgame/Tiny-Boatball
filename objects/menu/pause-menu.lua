@@ -22,7 +22,8 @@ function PauseMenu:new(owner)
     -- self:add(AspectRatioButton, width / 5, height/15, 'aspect ratio')
     -- self:add(Button, width / 5, height/15, 'input remapping')
     self:add(Blank, width/5, height/6)
-    self:add(SfxButton, width / 5, height/15, 'sound effects')
+    self:add(SfxButton, width / 5, height/15, 'sfx volume')
+    self:add(MusicButton, width / 5, height/15, 'music volume')
     self:add(Blank, width / 5, height/30)
     self:add(Button, width / 5, height/15, 'resume')
     self:add(Button, width / 5, height/15, 'go home')
@@ -114,7 +115,10 @@ function PauseMenu:process_input()
         elseif self:is_button('go home') then
             self.holder.objects[self.active_block]:animate_pressed()
             -- self.holder.objects[self.active_block]:head_shake()
-        elseif self:is_button('sound effects') then
+        elseif self:is_button('sfx volume') then
+            self.holder.objects[self.active_block]:head_shake()
+            self.owner.sound:play('blunder-snare')
+        elseif self:is_button('music volume') then
             self.holder.objects[self.active_block]:head_shake()
             self.owner.sound:play('blunder-snare')
         end
