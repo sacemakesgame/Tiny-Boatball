@@ -8,7 +8,7 @@ function CharacterDisplay:new(owner)
 
     self.canvas = graphics.new_canvas()
     self.spring = class.spring2d(width, 0, 100, 20)
-    self.boing_spring = class.spring(1, 1000, 50)
+    self.boing_spring = class.spring(1, 100, 5)
 
     self.character = 'axolotl'
 end
