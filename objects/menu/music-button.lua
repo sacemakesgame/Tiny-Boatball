@@ -98,7 +98,7 @@ function MusicButton:switch_right()
         self:head_shake()
     end
     MUSIC_SCALE = self.active_character
-    gamestate.current().sound:set_volume('music', MUSIC_SCALE)
+    gamestate.current().sound:set_volume('music', math.remap(MUSIC_SCALE, 0, 4, 0, 1))
 end
 
 function MusicButton:switch_left()
@@ -115,5 +115,5 @@ function MusicButton:switch_left()
         self:head_shake()
     end
     MUSIC_SCALE = self.active_character
-    gamestate.current().sound:set_volume('music', MUSIC_SCALE)
+    gamestate.current().sound:set_volume('music', math.remap(MUSIC_SCALE, 0, 4, 0, 1))
 end
