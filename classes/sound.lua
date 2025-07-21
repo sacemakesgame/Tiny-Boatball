@@ -63,14 +63,19 @@ function Sound:play(id, volume_add, pitch_add, loop)
         source = self.source[id]
     end
 
-    local channel = self.channels[self.id_to_channel[id]]
+    local channel = self.id_to_channel[id]
+    local channel_data = self.channels[channel]
     local clone = source:clone()
     -- clone:setVolume(math.clamp(channel.volume + (volume_add or 0), 0, 1))
-    clone:setVolume(math.clamp((channel.volume + (volume_add or 0)) * math.remap(SFX_SCALE, 0, 4, 0, 1), 0, 1)) -- apply master volume scale in a 'bad' way ;)
+    if (channel == 'sfx') or (channel == 'oreo') then -- yea glue code i know :v
+        clone:setVolume(math.clamp((channel_data.volume + (volume_add or 0)) * math.remap(SFX_SCALE, 0, 4, 0, 1), 0, 1)) -- apply master volume scale in a 'bad' way ;)
+    elseif channel == 'music' then
+        clone:setVolume(math.clamp((channel_data.volume + (volume_add or 0)) * math.remap(MUSIC_SCALE, 0, 4, 0, 1), 0, 1)) -- apply master volume scale in a 'bad' way ;)
+    end
     if channel.randomize_pitch then
-        clone:setPitch(random:float(channel.min_pitch, channel.max_pitch) + (pitch_add or 0))
+        clone:setPitch(random:float(channel_data.min_pitch, channel_data.max_pitch) + (pitch_add or 0))
     else
-        clone:setPitch(math.clamp(channel.pitch + (pitch_add or 0), 0, 1))
+        clone:setPitch(math.clamp(channel_data.pitch + (pitch_add or 0), 0, 1))
     end
     clone:setLooping(loop or false)
     clone:play()
@@ -78,6 +83,7 @@ function Sound:play(id, volume_add, pitch_add, loop)
     if self.active[channel] == nil then
         self.active[channel] = {}
     end
+
     table.insert(self.active[channel], clone)
 
     return clone
@@ -111,10 +117,12 @@ function Sound:randomize_pitch(channel, min, max)
 end
     
 function Sound:stop(channel)
-   assert(self.active[channel] ~= nil, 'Channel with name: ' .. channel .. ' does not exist.')
-   for k, sound in pairs(Sound.active[channel]) do
-      sound:stop()
-   end
+    assert(self.channels[channel] ~= nil, 'Channel with name: ' .. channel .. ' does not exist.')
+    if self.active[channel] then
+        for k, sound in pairs(self.active[channel]) do
+            sound:stop()
+        end
+    end
 end
 
 
