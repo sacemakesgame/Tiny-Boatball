@@ -376,7 +376,7 @@ local function bounce_goal_left(p, vel, radius)
     -- gl_right_aabb
     if bounce_off_aabb(p, vel, gl_right_aabb.minx, gl_right_aabb.miny, gl_right_aabb.minz, gl_right_aabb.maxx, gl_right_aabb.maxy, gl_right_aabb.maxz, radius) then return true end
     -- gl_top_aabb
-    -- if bounce_off_aabb(p, vel, gl_top_aabb.minx, gl_top_aabb.miny, gl_top_aabb.minz, gl_top_aabb.maxx, gl_top_aabb.maxy, gl_top_aabb.maxz, radius) then return true end  
+    if bounce_off_aabb(p, vel, gl_top_aabb.minx, gl_top_aabb.miny, gl_top_aabb.minz, gl_top_aabb.maxx, gl_top_aabb.maxy, gl_top_aabb.maxz, radius) then return true end  
     -- gl_back_aabb
     if bounce_off_aabb(p, vel, gl_back_aabb.minx, gl_back_aabb.miny, gl_back_aabb.minz, gl_back_aabb.maxx, gl_back_aabb.maxy, gl_back_aabb.maxz, radius) then return true end
 end
@@ -388,7 +388,7 @@ local function bounce_goal_right(p, vel, radius)
     -- gr_right_aabb
     if bounce_off_aabb(p, vel, gr_right_aabb.minx, gr_right_aabb.miny, gr_right_aabb.minz, gr_right_aabb.maxx, gr_right_aabb.maxy, gr_right_aabb.maxz, radius) then return true end
     -- gr_top_aabb
-    -- if bounce_off_aabb(p, vel, gr_top_aabb.minx, gr_top_aabb.miny, gr_top_aabb.minz, gr_top_aabb.maxx, gr_top_aabb.maxy, gr_top_aabb.maxz, radius) then return true end  
+    if bounce_off_aabb(p, vel, gr_top_aabb.minx, gr_top_aabb.miny, gr_top_aabb.minz, gr_top_aabb.maxx, gr_top_aabb.maxy, gr_top_aabb.maxz, radius) then return true end  
     -- gr_back_aabb
     if bounce_off_aabb(p, vel, gr_back_aabb.minx, gr_back_aabb.miny, gr_back_aabb.minz, gr_back_aabb.maxx, gr_back_aabb.maxy, gr_back_aabb.maxz, radius) then return true end
 end
