@@ -121,6 +121,6 @@ function CreditMenu:view_credit()
         self.owner.chat_holder:add(BubbleChat, vec2(width/2, height/2), '- Brassy Jazz')
         self.owner.chat_holder:add(BubbleChat, vec2(width/2, height/2 + padding), '- Play It Cool')
     elseif self:is_button('code') then
-        self.owner.chat_holder:add(BubbleChat, vec2(width/2, height/2), 'code by SaceMakesGame')    
+        self.owner.chat_holder:add(BubbleChat, vec2(width/2, height/2), 'code by SaceMakesGame (with help of buncha cool guys!)')    
     end
 end
