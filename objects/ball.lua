@@ -69,7 +69,9 @@ end
 
 function Ball:boing(force_len)
     self.spring:pull(math.remap(force_len, 0, .5, 0, .3))
-    if force_len > .3 then
-        self.owner.sound:play('ball-bounce')
-    end
+    -- if force_len > .3 then
+    --     self.owner.sound:play('ball-bounce')
+    -- end
+
+    self.owner.sound:play('ball-bounce', math.remap(force_len, 0, .7, -5, 0))
 end
