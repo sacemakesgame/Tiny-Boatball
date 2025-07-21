@@ -6,6 +6,7 @@ TYPE = {
     MAIN = 1,
     CAREER = 2,
     OPTIONS = 3,
+    CREDIT = 4,
 }
 
 local t = {}
@@ -207,7 +208,6 @@ end
 
 function save_options_data()
     local data = {}
-    data.CAREER_PROGRESSION_INDEX = CAREER_PROGRESSION_INDEX
     data.RESOLUTION_QUALITY = RESOLUTION_QUALITY
     data.ASPECT_RATIO = ASPECT_RATIO
     data.IS_FULLSCREEN = IS_FULLSCREEN

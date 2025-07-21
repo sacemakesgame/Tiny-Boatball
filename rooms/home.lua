@@ -142,6 +142,7 @@ function Home:enter(prev, type, active_block)
     self.main_menu = self.ui_holder:add(MainMenu)
     self.career_menu = self.ui_holder:add(CareerMenu)
     self.options_menu = self.ui_holder:add(OptionsMenu)
+    self.credit_menu = self.ui_holder:add(CreditMenu)
     self.character_display = CharacterDisplay(self)
     self.chat_holder = class.holder(self)
 
@@ -152,6 +153,8 @@ function Home:enter(prev, type, active_block)
         self.career_menu:enter()
     elseif type == TYPE.OPTIONS then
         self.options_menu:enter(active_block)
+    elseif type == TYPE.CREDIT then
+        self.credit_menu:enter()
     end
     self.eye.spring.x:set(self.eye.target)
 
@@ -194,6 +197,8 @@ function Home:update(dt)
         self.career_menu:process_input()
     elseif self.type == TYPE.OPTIONS then
         self.options_menu:process_input()
+    elseif self.type == TYPE.CREDIT then
+        self.credit_menu:process_input()
     end
 
 
@@ -209,6 +214,8 @@ function Home:update(dt)
         self.career_menu:set_active()
     elseif self.type == TYPE.OPTIONS then
         self.options_menu:set_active()
+    elseif self.type == TYPE.CREDIT then
+        self.credit_menu:set_active()
     end
 end
 
@@ -353,7 +360,9 @@ function Home:get_title_string()
         local stages = { 'qualifier', 'quarterfinal', 'semifinal', 'final' }
         return 'next: ' .. stages[CAREER_MATCH_COUNTER]
     elseif self.type == TYPE.OPTIONS then
-        return 'settings'
+        return 'options'
+    elseif self.type == TYPE.CREDIT then
+        return 'credits'
     end
 end
 

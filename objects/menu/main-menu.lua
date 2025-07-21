@@ -8,6 +8,7 @@ function MainMenu:new(owner)
 
     self:add(Button, width / 5, height/15, 'play')
     self:add(Button, width / 5, height/15, 'options')
+    self:add(Button, width / 5, height/15, 'credits')
     self:add(Button, width / 5, height/15, 'quit')
 
     self.active_block = 1
@@ -52,6 +53,10 @@ function MainMenu:process_input()
             self.owner.type = TYPE.OPTIONS
             self:exit()
             self.owner.options_menu:enter()
+        elseif self:is_button('credits') then
+            self.owner.type = TYPE.CREDIT
+            self:exit()
+            self.owner.credit_menu:enter()
         elseif self:is_button('quit') then
             love.event.quit()
         end
