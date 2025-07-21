@@ -7,7 +7,6 @@ function MainMenu:new(owner)
     self.spring = class.spring2d(width/2, height * 1.25, 100, 20)
 
     self:add(Button, width / 5, height/15, 'play')
-    -- self:add(Button, width / 5, height/20, 'quick match')
     self:add(Button, width / 5, height/15, 'options')
     self:add(Button, width / 5, height/15, 'quit')
 
@@ -49,11 +48,6 @@ function MainMenu:process_input()
             self.owner.type = TYPE.CAREER
             self:exit()
             self.owner.career_menu:enter()
-        -- elseif self.active_block == 2 then -- quick match
-        --     self.owner.type = TYPE.QUICKMATCH
-        --     self.owner.eye.target:set(15, 0, -15)
-        --     self:exit()
-        --     self.owner.quickmatch_menu:enter()
         elseif self:is_button('options') then
             self.owner.type = TYPE.OPTIONS
             self:exit()
@@ -63,36 +57,6 @@ function MainMenu:process_input()
         end
     end
 end
-
---[[function MainMenu:process_input(key)
-    if key == 'up' or key == 'w' or key == 'left' or key == 'a' then
-        self.active_block = self.active_block - 1
-        if self.active_block < 1 then self.active_block = #self.holder.objects end
-    elseif key == 'down' or key == 's' or key == 'right' or key == 'd' then
-        self.active_block = self.active_block + 1
-        if self.active_block > #self.holder.objects then self.active_block = 1 end
-
-    elseif key == 'return' then
-        if self.active_block == 1 then -- career
-            self.owner.type = TYPE.CAREER
-            -- self.owner.eye.target:set(-15, 0, -15)
-            self:exit()
-            self.owner.career_menu:enter()
-        -- elseif self.active_block == 2 then -- quick match
-        --     self.owner.type = TYPE.QUICKMATCH
-        --     self.owner.eye.target:set(15, 0, -15)
-        --     self:exit()
-        --     self.owner.quickmatch_menu:enter()
-        elseif self.active_block == 2 then -- options
-            self.owner.type = TYPE.OPTIONS
-            -- self.owner.eye.target:set(0, 15, 0)
-            self:exit()
-            self.owner.options_menu:enter()
-        elseif self.active_block == 3 then -- quit
-            love.event.quit()
-        end
-    end
-end]]
 
 function MainMenu:set_active()
     self.holder.objects[self.active_block].active = true        
