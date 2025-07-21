@@ -5,8 +5,7 @@ local min_dt, next_time
 TYPE = {
     MAIN = 1,
     CAREER = 2,
-    QUICKMATCH = 3,
-    OPTIONS = 4,
+    OPTIONS = 3,
 }
 
 local t = {}
@@ -17,8 +16,6 @@ t.player_index = 1
 t.opponent = {}
 t.opponent.keeper = ''
 t.opponent.outfields = {}
-
-QUICKMATCH_CHARACTER_LIST = t
 
 
 CAREER_OPPONENT_LIST = {
@@ -81,6 +78,7 @@ RESOLUTION_QUALITY = 2
 ASPECT_RATIO = 1
 IS_FULLSCREEN = 1
 SFX_SCALE = 4 -- 0-4, default is 4
+MUSIC_SCALE = 4 -- 0-4, default is 4
 
 
 
@@ -214,6 +212,7 @@ function save_options_data()
     data.ASPECT_RATIO = ASPECT_RATIO
     data.IS_FULLSCREEN = IS_FULLSCREEN
     data.SFX_SCALE = SFX_SCALE
+    data.MUSIC_SCALE = MUSIC_SCALE
     local serialized = lume.serialize(data)
     love.filesystem.write('options-data', serialized)
 end
@@ -235,5 +234,6 @@ function load_options_data()
         if data.ASPECT_RATIO then ASPECT_RATIO = data.ASPECT_RATIO end
         if data.IS_FULLSCREEN then IS_FULLSCREEN = data.IS_FULLSCREEN end
         if data.SFX_SCALE then SFX_SCALE = data.SFX_SCALE end
+        if data.MUSIC_SCALE then MUSIC_SCALE = data.MUSIC_SCALE end
     end
 end
