@@ -166,7 +166,7 @@ function love.draw()
 
 end
 
--- [[
+--[[
 function love.keypressed(key)
     if key == '`' then -- since espace is used to open menu
         love.event.quit()
