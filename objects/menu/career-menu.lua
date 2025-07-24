@@ -61,8 +61,8 @@ function CareerMenu:draw()
     -- "back" text info
     graphics.push()
     graphics.set_color(color.palette.dark)
-    graphics.translate(self.spring.x, 0)
-    graphics.print('(esc) to back', -800 * scale, height - 100 * scale, 0, .3)
+    graphics.translate(self.spring.x - width*1/3, 0)
+    graphics.print('(esc) to back', 50 * scale, height - 100 * scale, 0, .3)
     graphics.pop()
 
 
