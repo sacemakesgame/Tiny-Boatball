@@ -6,7 +6,7 @@ function CharacterDisplay:new(owner)
     self.projection = mat4.from_perspective(90, width/height, .01, 300)
     self.view_transform = mat4():look_at(vec3(0, 20, 20), vec3(0, 0, 0), vec3(0, 1, 0))
 
-    self.canvas = graphics.new_canvas()
+    self.canvas = graphics.new_canvas(width, height)
     self.spring = class.spring2d(width, 0, 100, 20)
     self.boing_spring = class.spring(1, 100, 5)
 
