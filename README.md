@@ -19,4 +19,4 @@ All code is under the **MIT license**.<br>
 All the music are from [HeatleyBros](https://www.youtube.com/user/HeatleyBros).<br>
 The font used is [Schoolbell](https://fonts.google.com/specimen/Schoolbell).<br>
 
-All **.pngs** and **.objs** are © SaceMakesGame and **not open source**.
+All **.pngs** and **.objs** are © SaceMakesGame and **not open source**. See `ASSET_LICENSE.txt` for details.
