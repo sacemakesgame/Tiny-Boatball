@@ -181,7 +181,7 @@ function Stage:enter(prev, type)
     self.world:reset(self.ball)
 
     self.time_counter = 60 * 2 -- 2 mintues per round
-    -- self.time_counter = 5 -- for testing only
+    -- self.time_counter = 1 -- for testing only
     self.is_counting = false
 
     local title = {
@@ -511,6 +511,7 @@ function Stage:reset_ball()
     end)
 end
 
+--[[
 function Stage:keypressed(key)
     if key == '1' then
         self.sound:play('goal-crowd')
@@ -525,8 +526,7 @@ function Stage:keypressed(key)
         self.score_board:animate_red()
         self.chat_holder:add(EventChat, vec2(width/2, height/2), { 'G', 'O', 'A', 'L', '!', '!' })
     end
-end
-
+end--]]
 
 function Stage:update_paused(dt)
     self.pause_menu:process_input()
