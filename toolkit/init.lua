@@ -103,7 +103,7 @@ function toolkit:draw()
     -- curtain
 	if self.curtain_scale > 0 then
 		love.graphics.setColor(color.palette.dark)
-		love.graphics.circle('fill', width/2, height/2, width*2 * self.curtain_scale)
+		love.graphics.circle('fill', width/2 * self.canvas_scale + self.canvas_x, height/2 * self.canvas_scale + self.canvas_y, width*2 * self.curtain_scale)
 	end
 
     -- draw debug point (not so useful tho)
