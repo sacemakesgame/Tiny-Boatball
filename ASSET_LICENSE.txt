@@ -1,0 +1,28 @@
+Asset License for "tiny boatball!"
+
+Music:
+- "Brassy Jazz" by HeatleyBros — https://youtu.be/-AXu6Rh2V-Y
+- "Play It Cool" by HeatleyBros — https://youtu.be/wsrQogUxOIA
+
+Font:
+- "Schoolbell" from Google Fonts — https://fonts.google.com/specimen/Schoolbell
+
+Graphics & Models:
+All `.png` and `.obj` files are © SaceMakesGame.
+
+---
+
+These assets are provided **only for use with this project**, for **personal or educational purposes**.
+
+You may:
+- Clone this repository and run the game locally.
+- Study and learn from the project.
+
+You may **not**:
+- Use the assets in your own projects.
+- Redistribute the game or assets (commercially or non-commercially).
+- Upload builds or forks with the original assets included.
+
+If you wish to use any asset outside this project, please contact me at: sacemakesgame@gmail.com
+
+— SaceMakesGame
