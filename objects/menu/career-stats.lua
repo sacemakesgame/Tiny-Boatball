@@ -27,12 +27,20 @@ end
 
 
 function CareerStats:draw()
-    -- stats thing
-    graphics.push()
-    graphics.translate(self.blue_stats_spring.x, self.blue_stats_spring.y)
-
     local xpadding = 250 * scale
     local ypadding = 100 * scale
+    -- stats thing
+    graphics.push() -- ally
+    graphics.translate(self.blue_stats_spring.x, self.blue_stats_spring.y)
+
+    graphics.white()
+    graphics.capsule('fill', 4 * -xpadding - xpadding/10, ypadding/2, 180 * scale, 180 * scale, true, .3)
+    graphics.set_color(color.palette.ally)
+    graphics.printmid('goal', 4 * -xpadding - xpadding/10, 0, 0, .3)
+    graphics.dashed_line_can_walk(4 * -xpadding - xpadding/10 - xpadding/3, ypadding/2, 0, ypadding/2, 40 * scale, 20 * scale, nil, 5 * scale, -love.timer.getTime() * 50)
+    graphics.printmid('blunder', 4 * -xpadding - xpadding/10, ypadding, 0, .3)
+    graphics.white()
+
     for i = 1, 4 do
         local dude = gamestate.current().ally_holder.objects[i]
         -- shadow
@@ -64,8 +72,16 @@ function CareerStats:draw()
 
     graphics.pop()
 
-    graphics.push()
+    graphics.push() -- opponent
     graphics.translate(self.red_stats_spring.x, self.red_stats_spring.y)
+
+    graphics.white()
+    graphics.capsule('fill', 4 * xpadding + xpadding/10, ypadding/2, 180 * scale, 180 * scale, true, .3)
+    graphics.set_color(color.palette.opponent)
+    graphics.printmid('goal', 4 * xpadding + xpadding/10, 0, 0, .3)
+    graphics.dashed_line_can_walk(0, ypadding/2, 4 * xpadding + xpadding/10 + xpadding/3, ypadding/2, 40 * scale, 20 * scale, nil, 5 * scale, love.timer.getTime() * 50)
+    graphics.printmid('blunder', 4 * xpadding + xpadding/10, ypadding, 0, .3)
+    graphics.white()
     
     for i = 1, 4 do
         local dude = gamestate.current().opponent_holder.objects[i]
@@ -83,7 +99,7 @@ function CareerStats:draw()
         graphics.printmid(dude.goal_count == 0 and '-' or dude.goal_count, (5-i) * xpadding - xpadding/2, 0, 0, .4)
         graphics.printmid(dude.blunder_count == 0 and '-' or dude.blunder_count, (5-i) * xpadding - xpadding/2, ypadding, 0, .4)
     end
-
+    
     graphics.pop()
 
     -- buttons
