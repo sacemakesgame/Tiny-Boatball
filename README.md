@@ -1,6 +1,6 @@
 # Tiny-Boatball
 
-_tiny boatball!_ is a tiny, physics-based football game set in aquarium.
+**_tiny boatball!_** is a tiny, physics-based football game set in aquarium.
 
 ![itch io gameplay](https://github.com/user-attachments/assets/d7f00409-897d-41f6-ab3d-f9d76bb4d71e)
 
@@ -19,4 +19,4 @@ All code is under the **MIT license**.<br>
 All the music are from [HeatleyBros](https://www.youtube.com/user/HeatleyBros).<br>
 The font used is [Schoolbell](https://fonts.google.com/specimen/Schoolbell).<br>
 
-All **.pngs** and **.objs** are © SaceMakesGame and **not open source**.
+All **.pngs** and **.objs** are © SaceMakesGame and **not open source**. See `ASSET_LICENSE.txt` for details.
