@@ -71,7 +71,7 @@ function Home:enter(prev, type, active_block)
 
     -- ALLIES
     self.ally_holder:add(AllyBoat, vec3(random:float(-15, -13), random:float(40, 60), random:float(-5, 5)), 'def', list:pop()) -- keeper
-    for i = 1, 4 do
+    for i = 2, 4 do
         self.ally_holder:add(AllyBoat, vec3(random:float(-15, -13), random:float(40, 60), random:float(-5, 5)), 'atk', list:pop()) -- outfields
     end
 
