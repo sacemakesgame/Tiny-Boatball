@@ -48,7 +48,7 @@ vec4 position(mat4 transformProjection, vec4 vertexPosition)
 
     if (!isDisplay) {
         project = vec4(shadowProjectionMatrix * shadowViewMatrix * modelMatrix * vertexPosition * Bias); //projected position on shadowMap
-        worldPosition.y += .0 + 0.2 * sin(worldPosition.x * 2. + time * 3.) * cos(worldPosition.z * 2. + time * 5.);
+        worldPosition.y += 0.2 * sin(worldPosition.x * 2. + time * 3.) * cos(worldPosition.z * 2. + time * 5.);
     }
 
     vec4 viewPosition = viewMatrix * worldPosition;
