@@ -79,7 +79,7 @@ RESOLUTION_QUALITY = 2
 ASPECT_RATIO = 1
 IS_FULLSCREEN = 1
 SFX_SCALE = 4 -- 0-4, default is 4
-MUSIC_SCALE = 4 -- 0-4, default is 4
+MUSIC_SCALE = 2 -- 0-4, default is 2
 
 
 
@@ -88,17 +88,6 @@ function love.load()
     love.graphics.setLineWidth(1)
     love.graphics.setLineJoin('bevel')
     love.graphics.setDefaultFilter('linear')
-    
-    local os = love.system.getOS()
-    
-    if os == 'Windows' then
-        -- width, height = 1520, 720
-	    -- love.window.setMode(width, height)
-    elseif os == 'Android' then
-        width, height = love.graphics.getDimensions()
-        love.window.setFullscreen(true)
-    end
-    -- NOTE: later at tool:init(), the GLOBAL width and height would get divided by canvas_divider
     
     load_career_data()
     load_options_data()
